@@ -14,7 +14,7 @@ Sur les OS Windows, on utilise couramment le mode graphique. Néanmoins, le pass
 
 #### 2. Gestion des services
 
-Les services sont des programmes qui, en général, s'exécute au démarrage du système d'exploitation, et qui tournent en arrière-plan. C'est-à-dire qu'ils fonctionnent sans que l'on ait nécessairement une fenêtre ou une notification à l'écran.
+Les services sont des programmes qui, en général, s'exécutent au démarrage du système d'exploitation, et qui tournent en arrière-plan. C'est-à-dire qu'ils fonctionnent sans que l'on ait nécessairement une fenêtre ou une notification à l'écran.
 
 Pour la suite de cet atelier, ouvre une console PowerShell.
 Tu la trouveras dans le menu  démarrer en cherchant **powershell**.
