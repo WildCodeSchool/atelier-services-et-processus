@@ -14,10 +14,10 @@ Sur les OS Windows, on utilise couramment le mode graphique. Néanmoins, le pass
 
 #### 2. Gestion des services
 
-Les services sont des programmes qui, en général, s'exécute au démarrage du système d'exploitation, et qui tournent en arrière-plan. C'est-à-dire qu'ils fonctionnent sans que l'on ait nécessairement une fenêtre ou une notification à l'écran.
+Les services sont des programmes qui, en général, s'exécutent au démarrage du système d'exploitation, et qui tournent en arrière-plan. C'est-à-dire qu'ils fonctionnent sans que l'on ait nécessairement une fenêtre ou une notification à l'écran.
 
-Pour la suite de cet atelier, ouvre une console PowerShell.
-Tu la trouveras dans le menu  démarrer en cherchant **powershell**.
+Pour la suite, tu vas devoir ouvrir une console PowerShell en mode administrateur.
+Recherche **powershell** dans le champ de recherche (Cortana) et clic sur **Exécuter en tant qu'administrateur"
 
 **Affichage des services**
 La commande ci-dessous affiche tous les services.
@@ -53,44 +53,42 @@ Pour lister tous les services en cours d’exécution :
 PS C:\Users\wilder> Get-Service | Where-Object {$_.Status -eq « Running »}
 ```
 
-Pour lister un service en particulier, par exemple **Registre à distance** :
+Pour lister un service en particulier, par exemple **WalletService** :
 
 ```powershell
-PS C:\Users\wilder> Get-Service | Where-Object {$_.DisplayName -like "*registre à distance*"}
+PS C:\Users\wilder> Get-Service | Where-Object {$_.DisplayName -like "*WalletService*"}
 ```
 
 **Démarrage des services**
-Démarrage d’un service, par exemple **fhsvc** :
+Démarrage d’un service, par exemple **WalletService** :
 
 ```powershell
-PS C:\Users\wilder> Start-Service -Name fhsvc
+PS C:\Users\wilder> Start-Service -Name WalletService
 ```
 
 Ou
 
 ```powershell
-PS C:\Users\wilder> Get-Service | Where-Object {$_.Name -eq "fhsvc"} | Start-Service
+PS C:\Users\wilder> Get-Service | Where-Object {$_.Name -eq "WalletService"} | Start-Service
 ```
 
 Comprends-tu ces 2 lignes de codes différentes ?
 
-* Dans la première, on va démarrer directement le service concerné, ici **fhsvc**
-* Dans la seconde, on va chercher tous les services, avec `Get-Service`, on va envoyer le résultat dans un pipe `|` et avec `Where-Object` on va rechercher le service, donc **fhsvc**. Ensuite on va le démarrer.
+* Dans la première, on va démarrer directement le service concerné, ici **WalletService**
+* Dans la seconde, on va chercher tous les services, avec `Get-Service`, on va envoyer le résultat dans un pipe `|` et avec `Where-Object` on va rechercher le service, donc **WalletService**. Ensuite on va le démarrer.
 
-**Arrêt des services (en console administrateur)**
-Pour la suite, tu vas devoir ouvrir une console PowerShell en mode administrateur.
-Recherche **powershell** dans le champ de recherche (Cortana) et clic sur **Exécuter en tant qu'administrateur"
+**Arrêt des services**
 
-Arrêt d’un service, par exemple **fhsvc** :
+Arrêt d’un service, par exemple **WalletService** :
 
 ```powershell
-PS C:\Users\wilder> Stop-Service -Name fhsvc
+PS C:\Users\wilder> Stop-Service -Name WalletService
 ```
 
 Ou
 
 ```powershell
-PS C:\Users\wilder> Get-Service | Where-Object {$_.Name -eq "fhsvc"} | Stop-Service
+PS C:\Users\wilder> Get-Service | Where-Object {$_.Name -eq "WalletService"} | Stop-Service
 ```
 
 Ici tu reconnais 2 lignes presque similaires à celles du démarrage d'un service.
@@ -102,10 +100,10 @@ Un service a 3 démarrages possible :
 * **Manuel** : le service n'est lancé qu'en cas de besoin
 * **Désactivé** : le service ne sera jamais utilisé
 
-Pour changer le mode de démarrage du service **fhsvc** à **automatique** :
+Pour changer le mode de démarrage du service **WalletService** à **automatique** :
 
 ```powershell
-PS C:\Users\wilder> Set-Service -Name fhsvc -StartupType Automatic
+PS C:\Users\wilder> Set-Service -Name WalletService -StartupType Automatic
 ```
 
 **Changement d’état d’un service**
@@ -115,10 +113,10 @@ Un service a 3 états possible :
 * **Stopped** : en arrêt
 * **Paused** : en attente
 
-Pour changer l’état du service **fhsvc** à **stopped** par exemple :
+Pour changer l’état du service **WalletService** à **stopped** par exemple :
 
 ```powershell
-PS C:\Users\wilder> Set-Service -Name fhsvc -Status Stopped
+PS C:\Users\wilder> Set-Service -Name WalletService -Status Stopped
 ```
 
 #### 3. Gestion des processus
@@ -142,6 +140,8 @@ Pour afficher le processus correspondant :
 ```powershell
 PS C:\Users\wilder> Get-Process -Name CalculatorApp
 ```
+
+> **CalculatorApp** peut aussi apparaitre sous le terme **Calculator** sur certaines version de windows (Windows 10 par ex)
 
 En ajoutant le paramètre **FileVersionInfo** et en formattant la sortie standard en affichage **Format-List**, on obtient plus d’information :
 
